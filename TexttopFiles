@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: #90EE90; /* Light Green */
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #textInput {
+      width: 80%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px;
+      margin: 5px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    #outputText {
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  </style>
+  <title>Text Styler</title>
+</head>
+<body>
+
+  <div id="container">
+    <label for="textInput">Enter text:</label>
+    <input type="text" id="textInput" placeholder="Type here...">
+
+    <button onclick="applyStyle('bold')">Bold</button>
+    <button onclick="applyStyle('italic')">Italic</button>
+    <button onclick="applyStyle('underline')">Underline</button>
+    <button onclick="changeFont()">Fonts</button>
+
+    <div id="outputText"></div>
+  </div>
+
+  <script>
+    let fontIndex = 0;
+    const fonts = ['Arial', 'Times New Roman', 'Verdana'];
+
+    function applyStyle(style) {
+      const inputElement = document.getElementById('textInput');
+      const outputElement = document.getElementById('outputText');
+      const text = inputElement.value;
+
+      if (style === 'bold') {
+        outputElement.innerHTML = `<strong>${text}</strong>`;
+      } else if (style === 'italic') {
+        outputElement.innerHTML = `<em>${text}</em>`;
+      } else if (style === 'underline') {
+        outputElement.innerHTML = `<u>${text}</u>`;
+      }
+    }
+
+    function changeFont() {
+      const outputElement = document.getElementById('outputText');
+      fontIndex = (fontIndex + 1) % fonts.length;
+      outputElement.style.fontFamily = fonts[fontIndex];
+    }
+  </script>
+
+</body>
+</html>
